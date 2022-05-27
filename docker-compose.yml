@@ -1,4 +1,3 @@
-
 services:
   postgres:
     container_name: postgres
@@ -14,6 +13,23 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+#  IDEALLY, IN A MIRCOSERV, EACH MODULE SHOULD HAVE ITS ON DB BUT TO
+#  SAVE RESOURCES WE ARE USING TWO INSTANCE IN THE SAMW DB
+
+#  postgres-fraud:
+#    container_name: postgres
+#    image: postgres
+#    environment:
+#      POSTGRES_USER: amigoscode
+#      POSTGRES_PASSWORD: password
+#      PGDATA: /data/postgres
+#    volumes:
+#      - postgres:/data/postgres
+#    ports:
+#      - "5434:5432"
+#    networks:
+#      - postgres
+#    restart: unless-stopped
 
   pgadmin:
     container_name: pgadmin

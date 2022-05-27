@@ -1,5 +1,7 @@
-package com.jerrybodam.customer;
+package com.jerrybodam.customer.controller;
 
+import com.jerrybodam.customer.dto.CustomerRegReq;
+import com.jerrybodam.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

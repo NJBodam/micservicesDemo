@@ -1,5 +1,8 @@
-package com.jerrybodam.customer;
+package com.jerrybodam.customer.service;
 
+import com.jerrybodam.customer.dto.CustomerRegReq;
+import com.jerrybodam.customer.model.Customer;
+import com.jerrybodam.customer.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 @Service

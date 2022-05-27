@@ -1,12 +1,13 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
-    name: customer
+    name: fraud
   datasource:
     password: "password"
-    url: jdbc:postgresql://localhost:5434/customer
+    # THis ususally would be a different DB but to save resouce we use the same instance with customer
+    url: jdbc:postgresql://localhost:5434/fraud
     username: "amigoscode"
   jpa:
     hibernate:

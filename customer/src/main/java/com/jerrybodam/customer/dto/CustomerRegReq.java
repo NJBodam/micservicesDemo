@@ -1,4 +1,4 @@
-package com.jerrybodam.customer;
+package com.jerrybodam.customer.dto;
 
 public record CustomerRegReq(
         String firstName,

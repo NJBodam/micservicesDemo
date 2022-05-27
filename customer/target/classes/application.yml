@@ -16,3 +16,5 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: "true"
         show-sql: true
+
+#        IF it breaks, create new fraud db on server 5050

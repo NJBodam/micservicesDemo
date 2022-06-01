@@ -7,11 +7,11 @@ spring:
   datasource:
     password: "password"
     # THis ususally would be a different DB but to save resouce we use the same instance with customer
-    url: jdbc:postgresql://localhost:5434/fraud
-    username: "amigoscode"
+    url: jdbc:postgresql://localhost:5432/fraud
+    username: "postgres"
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -19,3 +19,9 @@ spring:
         show-sql: true
 
 #        IF it breaks, create new fraud db on server 5050
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8763/eureka
+    fetch-registry: true
+    register-with-eureka: true

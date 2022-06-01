@@ -1,7 +1,7 @@
 package com.jerrybodam.customer.controller;
 
 import com.jerrybodam.customer.dto.CustomerRegReq;
-import com.jerrybodam.customer.service.CustomerService;
+import com.jerrybodam.customer.service.seviceimpl.CustomerServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/customers")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private final CustomerServiceImpl customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerServiceImpl customerService) {
         this.customerService = customerService;
     }
 
     @PostMapping
-    public void registerCuatomer(@RequestBody CustomerRegReq customerRegReq) {
+    public void registerCustomer(@RequestBody CustomerRegReq customerRegReq) {
         log.info("new customer created {}", customerRegReq);
         customerService.registerCustomer(customerRegReq);
     }

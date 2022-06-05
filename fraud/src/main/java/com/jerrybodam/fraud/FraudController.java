@@ -1,5 +1,6 @@
 package com.jerrybodam.fraud;
 
+import com.jerrybodam.clients.fraud.FraudCheckResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class FraudController {
         this.fraudCheckServiceImpl = fraudCheckServiceImpl;
     }
 
-    @GetMapping(path = "/{customerId}")
+    @GetMapping(path = "{customerId}")
     public FraudCheckResponse isFraudster(@PathVariable("customerId") Integer customerId) {
         boolean isFraudulentCustomer = fraudCheckServiceImpl
                 .isFraudulentCustomer(customerId);

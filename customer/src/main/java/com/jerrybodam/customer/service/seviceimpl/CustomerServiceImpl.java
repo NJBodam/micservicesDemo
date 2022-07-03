@@ -1,5 +1,6 @@
 package com.jerrybodam.customer.service.seviceimpl;
 
+import com.jerrybodam.amqp.RabbitMQMessageProducer;
 import com.jerrybodam.clients.fraud.FraudCheckResponse;
 import com.jerrybodam.clients.fraud.FraudClient;
 import com.jerrybodam.clients.notification.NotificationClient;
@@ -17,13 +18,15 @@ public class CustomerServiceImpl {
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
     private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer producer;
 
     @Autowired
     public CustomerServiceImpl(CustomerRepository customerRepository, NotificationClient notificationClient,
-                               FraudClient fraudClient) {
+                               FraudClient fraudClient, RabbitMQMessageProducer producer) {
         this.customerRepository = customerRepository;
         this.notificationClient = notificationClient;
         this.fraudClient = fraudClient;
+        this.producer = producer;
     }
 
     public void registerCustomer(CustomerRegReq customerRegReq) {
@@ -34,28 +37,25 @@ public class CustomerServiceImpl {
                 .build();
 
         customerRepository.saveAndFlush(customer);
-
-        notificationClient.sendNotification(
-                new NotificationRequest(
-                        customer.getId(),
-                        customer.getEmail(),
-                        String.format("Hi %s, welcome to Amigoscode...",
-                                customer.getFirstName())
-                )
-        );
-
         FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
-            //Alternatively
-//        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customer_id}",
-//                FraudCheckResponse.class,
-//                customer.getId()
-//                );
 
         if (fraudCheckResponse.isFraudster()) {
             throw new IllegalStateException("Fraudster");
         }
-        //todo: validate email, check if email is taken
-        //todo: check if fraudster
-        //todo: send notifiction
+
+        NotificationRequest notificationRequest = new NotificationRequest(
+                customer.getId(),
+                customer.getEmail(),
+                String.format("Hi %s, welcome to Amigoscode...",
+                        customer.getFirstName())
+        );
+        producer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
+        );
+
+
+
     }
 }

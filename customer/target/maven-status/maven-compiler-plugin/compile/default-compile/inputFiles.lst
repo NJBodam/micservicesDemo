@@ -1,0 +1,8 @@
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/model/Customer.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/CustomerApp.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/dto/CustomerRegReq.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/controller/CustomerController.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/CustomerConfig.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/repository/CustomerRepository.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/service/seviceimpl/CustomerServiceImpl.java
+/Users/mac/IdeaProjects/micservicesDemo/customer/src/main/java/com/jerrybodam/customer/service/CustomerService.java

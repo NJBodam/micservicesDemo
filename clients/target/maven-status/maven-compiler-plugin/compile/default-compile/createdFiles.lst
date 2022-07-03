@@ -1,0 +1,4 @@
+com/jerrybodam/clients/notification/NotificationClient.class
+com/jerrybodam/clients/fraud/FraudClient.class
+com/jerrybodam/clients/fraud/FraudCheckResponse.class
+com/jerrybodam/clients/notification/NotificationRequest.class
